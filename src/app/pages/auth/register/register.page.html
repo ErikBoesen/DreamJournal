@@ -1,0 +1,38 @@
+<ion-content class="ion-padding auth">
+    <div class="vertically-center">
+        <ion-img class="logo" src="assets/imgs/logo/logo.png" alt="App logo"></ion-img>
+        <form #form="ngForm" (ngSubmit)="register(form)">
+            <ion-grid>
+                <ion-row color="primary" class="ion-justify-content-center">
+                    <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+                        <div>
+                            <ion-item lines="none">
+                                <ion-input name="name" type="text" placeholder="Full Name" maxlength="64"
+                                           ngModel required autocorrect="on"></ion-input>
+                            </ion-item>
+                            <ion-item lines="none">
+                                <ion-input name="email" type="email" placeholder="you@school.edu" maxlength="120"
+                                           ngModel required></ion-input>
+                            </ion-item>
+                            <ion-item lines="none">
+                                <ion-input name="year" type="number" placeholder="Graduation year, eg. 2021"
+                                           ngModel required></ion-input>
+                            </ion-item>
+                            <ion-item lines="none">
+                                <ion-input name="password" type="password" placeholder="Password"
+                                           ngModel required autocomplete="off"></ion-input>
+                            </ion-item>
+                        </div>
+                        <p>By registering, you agree to the <a href="#" (click)="browser.open('https://comethru.io/tos')">Terms and Conditions</a> and <a href="#" (click)="browser.open('https://comethru.io/privacypolicy')">Privacy Policy</a>.</p>
+                        <div>
+                            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Register</ion-button>
+                        </div>
+                    </ion-col>
+                    <div class="ion-text-center">
+                        Already have an account?<br><a routerLink="/login">Tap here to log in!</a>
+                    </div>
+                </ion-row>
+            </ion-grid>
+        </form>
+    </div>
+</ion-content>

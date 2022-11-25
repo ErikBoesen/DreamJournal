@@ -1,0 +1,26 @@
+<app-loader *ngIf="!users"></app-loader>
+<div *ngIf="users && users.length > 0" class="list">
+    <ion-grid class="ion-no-padding">
+        <ion-row class="ion-align-items-center ion-no-padding" *ngFor="let user of users">
+            <ion-col size="2" class="ion-no-padding" (click)="openUser(user.id)">
+                <app-avatar [user]="user"></app-avatar>
+            </ion-col>
+            <ion-col size="7" (click)="openUser(user.id)">
+                <div>
+                    <h2>
+                        {{ user.name }}
+                        <img class="verified" *ngIf="user.verified" src="assets/imgs/verified.png">
+                    </h2>
+                </div>
+            </ion-col>
+            <ion-col size="3" class="ion-no-padding" *ngIf="!user.is_me">
+                <app-friend-buttons *ngIf="friend" [user]="user"></app-friend-buttons>
+                <app-invite-buttons *ngIf="invite" [user]="user" [eventId]="eventId"></app-invite-buttons>
+                <app-host-buttons *ngIf="host" [user]="user" [eventId]="eventId"></app-host-buttons>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>
+<div *ngIf="emptyMessage && users && users.length == 0" class="empty-list">
+    {{ emptyMessage }}
+</div>

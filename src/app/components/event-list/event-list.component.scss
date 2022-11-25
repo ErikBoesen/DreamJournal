@@ -1,0 +1,22 @@
+.description-preview {
+    margin-bottom: 5px;
+}
+.description-preview, .tag {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.time {
+    text-align: right;
+}
+.day {
+    font-size: 22px;
+}
+.hour {
+}
+.event-list ion-row {
+    margin: 0 0 10px;
+}
+.event-list ion-icon {
+    vertical-align: top;
+}

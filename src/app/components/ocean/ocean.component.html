@@ -1,0 +1,7 @@
+<div class="ocean">
+    <div class="status-label">Rating:<br><span>{{ rating }}</span></div>
+    <div class="water" [style.transform]="'translateY(' + (150 / 5 * (5 - this.rating)) + 'px)'">
+        <span class="wave"></span>
+        <span class="deep-water"></span>
+    </div>
+</div>

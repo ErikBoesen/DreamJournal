@@ -1,0 +1,25 @@
+<!--<app-header title="Search" [back]="true"></app-header>-->
+
+<ion-content class="ion-padding">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <app-loader [showMessage]="false"></app-loader>
+    </ion-refresher>
+    <ion-item lines="none" class="search">
+        <ion-icon name="search"></ion-icon>
+        <ion-input #searchbar type="text" autocomplete="off" autocorrect="off" placeholder="Search for someone..." (input)="search($event.target.value)"></ion-input>
+        <ion-icon name="close" *ngIf="searched" (click)="clearSearch()"></ion-icon>
+    </ion-item>
+    <app-user-list *ngIf="searched" [users]="searchResults" [friend]="true" emptyMessage="No results found."></app-user-list>
+    <div *ngIf="!searched">
+        <div *ngIf="requests && requests.length > 0" class="list">
+            <h3><ion-icon name="person-add"></ion-icon> Friend requests</h3>
+            <app-user-list [users]="requests" [friend]="true" emptyMessage="You have no incoming requests."></app-user-list>
+        </div>
+        <h3><ion-icon name="people"></ion-icon> Friends</h3>
+        <app-user-list [users]="friends" [friend]="true" emptyMessage="None yet! Make some?"></app-user-list>
+        <div *ngIf="facebookFriends && facebookFriends.length > 0">
+            <h3><ion-icon name="logo-facebook"></ion-icon> FB Friends</h3>
+            <app-user-list [users]="facebookFriends" [friend]="true" emptyMessage="Couldn't find any friends from Facebook!"></app-user-list>
+        </div>
+    </div>
+</ion-content>

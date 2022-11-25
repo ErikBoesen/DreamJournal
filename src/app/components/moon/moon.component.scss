@@ -1,0 +1,38 @@
+.moon {
+    display: inline-block;
+    background: #ffffff;
+    height: 150px;
+    width: 150px;
+    margin-left: 10px;
+    border-radius: 100%;
+}
+.moon .darkness {
+    position: relative;
+    top: 0;
+    background-color: #15202b;
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+}
+.moon .status-label {
+    top: -110px;
+    position: relative;
+    color: white;
+    mix-blend-mode: difference;
+    filter: saturate(0);
+}
+.moon.small .status-label {
+    display: none;
+}
+.moon.small,
+.moon.small .darkness {
+    width: 75px;
+    height: 75px;
+}
+.moon.small {
+    margin-left: 0;
+    overflow: visible;
+}
+.moon.small .darkness {
+    transition: 1s transform;
+}

@@ -1,0 +1,27 @@
+<app-loader *ngIf="!events"></app-loader>
+<div *ngIf="events && events.length > 0" class="event-list">
+    <ion-grid class="ion-no-padding">
+        <ion-row class="ion-align-items-center list-event {{ event.open ? 'open' : 'closed' }}" *ngFor="let event of events" (click)="goToEvent(event.id)">
+            <ion-col size="8" class="ion-no-padding">
+                <h2><ion-icon *ngIf="!event.open" name="lock"></ion-icon> {{ event.name }}</h2>
+                <div class="description-preview">{{ event.description }}</div>
+                <div class="tag">
+                    <ion-icon name="pin"></ion-icon>
+                    {{ event.location }}
+                </div>
+            </ion-col>
+            <ion-col *ngIf="event.happening_now" class="ion-no-padding" size="1.5">
+            </ion-col>
+            <ion-col *ngIf="event.happening_now" class="ion-no-padding" size="2.5">
+                <app-moon [people]="event.people" [capacity]="event.capacity"></app-moon>
+            </ion-col>
+            <ion-col *ngIf="!event.happening_now" size="4" class="time ion-no-padding ">
+                <div class="day">{{ dates.day(event.time) }}</div>
+                <h2 class="hour">{{ dates.fullTime(event.time) }}</h2>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>
+<div *ngIf="events && events.length == 0 && emptyMessage" class="empty-list">
+    {{ emptyMessage }}
+</div>
