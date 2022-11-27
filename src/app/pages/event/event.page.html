@@ -1,4 +1,4 @@
-<app-header [title]="(event && event.image) ? event.name : 'Event'" [back]="true"></app-header>
+<app-header [title]="(event && event.image) ? event.name : 'Dream'" [back]="true"></app-header>
 
 <ion-content class="ion-padding">
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
@@ -13,9 +13,6 @@
         <app-banner [src]="event.image"></app-banner>
         <div>
             <div class="tag"><a href="#" (click)="browser.open('https://www.google.com/maps/search/?api=1&query=' + event.address)"><ion-icon name="pin"></ion-icon> {{ event.location }}</a></div>
-            <div class="tag"><ion-icon name="clock"></ion-icon>
-                {{ dates.fullTime(event.time) }}{{ event.end_time ? '-' + dates.fullTime(event.end_time) : '' }}
-            </div>
             <div class="tag"><ion-icon name="calendar"></ion-icon> {{ dates.fullDate(event.time) }}</div>
         </div>
         <div *ngIf="event.tags.length > 0" class="tags">
@@ -27,7 +24,7 @@
         <p *ngIf="event.alcohol">According to state law, you must be over 21 years of age to consume alcohol.</p>
         <p>
             <em>
-                Hosted by
+                Posted by
                 <span *ngFor="let host of event.hosts; let isLast=last">
                     <span *ngIf="event.hosts.length == 2 && isLast"> and </span>
                     <span *ngIf="event.hosts.length > 2 && isLast">and </span>
@@ -41,17 +38,6 @@
         <p *ngIf="event.address">
             Full Address: <em>{{ event.address }}</em>. <a href="#" (click)="browser.open('https://www.google.com/maps/search/?api=1&query=' + event.address)">Navigate there</a>
         </p>
-
-        <ion-grid class="status ion-no-padding" *ngIf="event.happening_now">
-            <ion-row class="ion-no-padding">
-                <ion-col class="ion-no-padding" size="6">
-                    <app-ocean [rating]="event.rating"></app-ocean>
-                </ion-col>
-                <ion-col class="ion-no-padding" size="6">
-                    <app-moon [people]="event.people" [capacity]="event.capacity" [large]="true"></app-moon>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
 
         <h3 *ngIf="event.happening_now && friends && friends.length > 0">Friends here</h3>
         <ion-grid *ngIf="event.happening_now && friends && friends.length > 0" class="friends ion-no-padding">
@@ -94,10 +80,6 @@
             <ion-button *ngIf="event.mine" class="button" expand="block" size="large" (click)="edit()">
                 <ion-icon name="create"></ion-icon>
                 Edit
-            </ion-button>
-            <ion-button *ngIf="event.mine" class="button" expand="block" size="large" (click)="openReviews()" color="warning">
-                <ion-icon name="star"></ion-icon>
-                Reviews
             </ion-button>
             <ion-button *ngIf="event.mine || event.open || (event.transitive_invites && event.invited_me)" class="button" expand="block" size="large" color="success" (click)="openInvites()">
                 <ion-icon name="person-add"></ion-icon>
