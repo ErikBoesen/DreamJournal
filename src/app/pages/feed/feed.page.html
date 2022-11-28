@@ -3,7 +3,7 @@
         <app-loader [showMessage]="false"></app-loader>
     </ion-refresher>
     <div *ngIf="events && events.length > 0">
-        <ion-img class="logo" src="/assets/imgs/logo/logo.png"></ion-img>
+        <ion-img class="logo" src="/assets/imgs/logo/moon.png"></ion-img>
     </div>
     <app-event-list [class]="!events ? 'vertically-center' : ''" [events]="events"></app-event-list>
     <div *ngIf="events && events.length == 0" class="empty-list vertically-center">
