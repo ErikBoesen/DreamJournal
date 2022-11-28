@@ -33,8 +33,8 @@
                             emptyMessage="{{ user.is_me ? 'You haven\'t hosted yet.' : user.name + ' isn\'t hosting right now.' }}"></app-event-list>
         </div>
 
-        <h3 *ngIf="events && events.length > 0">{{ isMe ? 'Hosted' : 'Hosting' }}</h3>
-        <app-event-list [events]="events" [emptyMessage]="user.is_me ? 'You have not hosted any events yet.' : user.name + ' is not hosting any events.'"></app-event-list>
+        <h3 *ngIf="events && events.length > 0">{{ isMe ? 'Your Dreams' : 'Dreams' }}</h3>
+        <app-event-list [events]="events" [emptyMessage]="user.is_me ? 'You have not posted any dreams yet.' : user.name + ' has not posted any dreams yet.'"></app-event-list>
 
         <div><a *ngIf="!(isMe || user.is_me)" (click)="block()"><u>Block {{ user.name }}</u></a></div>
     </div>
