@@ -34,5 +34,24 @@ export class LoginPage implements OnInit {
     }
 
     async login(form) {
+        const loading = await this.loadingCtrl.create({
+            message: 'Logging in...'
+        });
+        await loading.present();
+        this.authService.login(form.value).subscribe(response => {
+            this.resetFields();
+            loading.dismiss();
+
+            this.router.navigateByUrl('/');
+        }, response => {
+            loading.dismiss();
+            this.alertController.create({
+                header: 'Error',
+                message: response.error.message,
+                buttons: ['OK'],
+            }).then(alert => {
+                alert.present();
+            });
+        });
     }
 }
