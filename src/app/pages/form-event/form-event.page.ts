@@ -150,8 +150,8 @@ export class FormEventPage implements OnInit {
 
     async end() {
         const alert = await this.alertCtrl.create({
-            header: 'Really end?',
-            message: 'Are you sure you want to end ' + this.event.name + '? This can\'t be undone.',
+            header: 'Really delete?',
+            message: 'Are you sure you want to delete ' + this.event.name + '? This can\'t be undone.',
             buttons: [
                 {
                     text: 'No',
@@ -195,10 +195,10 @@ export class FormEventPage implements OnInit {
             data.lng = this.lng;
             const alert = await this.alertCtrl.create({
                 header: 'Are you sure?',
-                message: data.name + ' will go live at your location.',
+                message: data.name + ' will be posted.',
                 buttons: [
                     {
-                        text: 'Lemme check again',
+                        text: 'Check again',
                         role: 'cancel',
                         handler: () => {},
                     },
